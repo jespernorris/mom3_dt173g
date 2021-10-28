@@ -1,0 +1,140 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    max-width: $bodyWidth;
+    background-color: $lightGrey;
+    margin: 0 auto;
+}
+
+article {
+    border-bottom: $divider;
+    p {
+        max-width: $textWidth;
+    }
+}
+
+// Bildspelet med ekorrar
+.slideshow-container {
+    max-width: $imgWidth;
+    text-align: center;
+    border: 1px solid $black;
+    padding: 0.5em;
+    .slides {
+        img {
+            max-width: $imgWidth;
+            max-height: $imgHeight;
+        }
+    }
+}
+
+// Mixin för formerna
+@mixin shapes($circle: false) {
+    height: 150px;
+    width: 150px;
+
+    @if $circle {
+        border-radius: 50%;
+    } @else {
+        border-radius: 40px;
+    }
+
+    &:hover {
+        box-shadow: 6px 6px 6px 4px $grey;
+    }
+}
+
+// Meddelande som dyker upp vid hover utav #shape3
+#secretMessage {
+    display: none;
+}
+
+// Former som visas längst ned på webbplatsen
+.shapes-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: $shapeMargin;
+    padding-bottom: $shapeMargin;
+
+    #shape1 {
+        @include shapes;
+        background-color: $black;
+    }
+    
+    #shape2 {
+        @include shapes($circle: true);
+        background-color: $darkRed;
+        margin-left: $shapeMargin;
+    }
+    
+    #shape3 {
+        @extend #shape1;
+        transform:rotate(45deg);
+        background: linear-gradient($black, $grey, $darkRed);
+        margin-left: $shapeMargin;
+
+        &:hover {
+            background: linear-gradient(360deg, $black, $grey, $darkRed);
+        }
+    }
+
+    // För att visa det hemliga meddelandet
+    #shape3:hover ~ #secretMessage {
+        display: initial;
+        margin: $shapeMargin
+    }
+}
+
+// Tablets
+@media screen and (max-width: $tabletWidth) {
+    body {
+        max-width: $tabletBody;
+    }
+
+    // Ändrar formerna till att visas i kolumn
+    .shapes-container {
+        flex-direction: column;
+        #shape2 {
+            margin-top: $shapeMargin;
+            margin-left: 0px;
+        }
+
+        #shape3 {
+            margin-top: $shapeMargin;
+            margin-left: 0px;
+        }
+    }
+    article {
+        p {
+            max-width: $tabletText;
+        }
+    }
+}
+
+// Mobiler
+@media screen and (max-width: $mobileWidth) {
+    body {
+        max-width: $mobileBody;
+    }
+
+    h2 {
+        max-width: 90%;
+    }
+
+    .slideshow-container {
+        max-width: 90%;
+    }
+    
+    article {
+        padding: 1em;
+        p {
+            max-width: $mobileText;
+        }
+    }
+
+    .shapes-container {
+        max-width: 80%;
+        margin: 0 auto;
+    }
+}

@@ -1,0 +1,29 @@
+// Colors
+$red: rgb(255, 0, 0);
+$darkRed: darken($red, 30%);
+$black: rgb(0, 0, 0);
+$white: rgb(255, 255, 255);
+$grey: rgb(190, 190, 190);
+$lightGrey: lighten($grey, 20%);
+
+// Width variables
+$bodyWidth: 80%;
+$textWidth: 60%;
+$imgWidth: 400px;
+$imgHeight: 250px;
+
+// Margins 
+$shapeMargin: 2em;
+
+// Media screen widths
+// iPad
+$tabletBody: 90%;
+$tabletWidth: 768px;
+$tabletText: 85%;
+// iPhone 6/7/8 Plus
+$mobileBody: 100%;
+$mobileWidth: 414px;
+$mobileText: 95%;
+
+// Content divider
+$divider: 2px solid $black;

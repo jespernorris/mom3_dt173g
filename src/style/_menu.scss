@@ -1,0 +1,66 @@
+.topnav {
+    display: none;
+}
+
+// Meny för stora skärmar
+header {
+    nav {
+        background-color: $darkRed;
+        padding: 0.25em;
+        ul {
+        display: flex;
+            li {
+                list-style: none;
+                margin-left: 1em;
+                a {
+                text-decoration: none;
+                color: $white;
+                font-size: 120%;
+                border: 1px solid black;
+                padding: 2px;
+                box-shadow: 2px 2px $black;
+                }
+                a:hover {
+                    color: $grey;
+                }
+            }
+        }
+    }
+}
+
+// Meny för mindre skärmar
+@media screen and (max-width: $tabletWidth) {  
+    header {
+        nav {
+            display: none;
+        }
+    }
+    
+    .topnav {
+        display: initial;
+        /* Gömmer menyn tills burgaren klickas på */
+        #myLinks {
+        display: none;
+        }
+        a {
+            color: $white;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+            display: block;
+            background: $darkRed;
+            border: 1px solid black;
+            &.icon {
+                display: block;
+                background: $darkRed;
+                padding: 1em;
+                text-align: center;
+                max-width: 100%;
+            }
+            &:hover {
+                background-color: lighten($darkRed, 5%);
+                color: $grey;
+            } 
+        }
+    }
+}
